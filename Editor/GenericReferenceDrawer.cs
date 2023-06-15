@@ -62,7 +62,8 @@ namespace MSD.Editor
 						PopupStyle);
 					useConstantProp.boolValue = result == 0;
 
-					EditorGUI.PropertyField(position, useConstantProp.boolValue ? constantValueProp : variableProp, GUIContent.none);
+					EditorGUI.PropertyField(position, useConstantProp.boolValue ? constantValueProp : variableProp,
+						GUIContent.none);
 
 					if (changeCheck.changed) 
 					{

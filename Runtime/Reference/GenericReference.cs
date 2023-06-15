@@ -41,10 +41,7 @@ namespace MSD
             _variable = variable;
         }
 
-        public TValue Value
-        {
-            get { return _useConstant ? _constantValue : _variable.Value; }
-        }
+        public TValue Value => _useConstant ? _constantValue : _variable.Value;
 
         public static implicit operator TValue(GenericReference<TValue, TCustomVariable> reference) => reference.Value;
     }
