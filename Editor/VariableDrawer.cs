@@ -16,7 +16,7 @@ namespace MSD.Editor
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{
-			SerializedProperty initialValueProp = property.FindPropertyRelative("_initialValue");
+			SerializedProperty initialValueProp = property.FindPropertyRelative("_value");
 
 			Rect initialValueRect = new Rect(position) 
 			{
@@ -51,7 +51,7 @@ namespace MSD.Editor
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
 		{
-			SerializedProperty initialValueProp = property.FindPropertyRelative("_initialValue");
+			SerializedProperty initialValueProp = property.FindPropertyRelative("_value");
 			float height = EditorGUI.GetPropertyHeight(initialValueProp);
 			height += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
 			return height;

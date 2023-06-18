@@ -16,7 +16,7 @@ namespace MSD
         IValueChangeObservable<T>,
         IValueChangeObservable
     {
-        [SerializeField] private T _initialValue = default;
+        [SerializeField] private T _value = default;
 
         [field: NonSerialized] private T RuntimeValue { get; set; } = default;
 
@@ -53,7 +53,7 @@ namespace MSD
 
         public void Reset()
         {
-            RuntimeValue = _initialValue;
+            RuntimeValue = _value;
         }
     }
 
