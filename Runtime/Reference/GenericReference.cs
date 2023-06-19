@@ -11,8 +11,7 @@ Date:       06/11/2018 15:41
 namespace MSD
 {
     [Serializable]
-    public abstract class GenericReference<TValue, TCustomVariable> : GenericReferenceBase,
-        ISerializationCallbackReceiver
+    public abstract class GenericReference<TValue, TCustomVariable> : ISerializationCallbackReceiver
         where TCustomVariable : CustomVariable<TValue>
     {
         [SerializeField] private bool _useConstant;
@@ -71,9 +70,5 @@ namespace MSD
                 OnValueChanged.Invoke(value);
             }
         }
-    }
-
-    public abstract class GenericReferenceBase
-    {
     }
 }

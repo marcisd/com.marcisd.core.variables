@@ -10,7 +10,7 @@ Date:       15/11/2018 19:42
 
 namespace MSD.Editor
 {
-	[CustomPropertyDrawer(typeof(GenericReferenceBase), true)]
+	[CustomPropertyDrawer(typeof(GenericReference<,>), true)]
 	public class GenericReferenceDrawer : PropertyDrawer
 	{
 		private static readonly string[] POPUP_OPTIONS = { "Use Constant", "Use Variable" };
