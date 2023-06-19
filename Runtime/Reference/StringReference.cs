@@ -10,7 +10,7 @@ Date:       06/11/2018 15:55
 namespace MSD
 {
     [Serializable]
-    public sealed class StringReference : GenericReference<string, StringCustomVariable>
+    public sealed class StringReference : GenericReference<string, CustomVariable<string>>
     {
         public StringReference()
         {
@@ -20,7 +20,7 @@ namespace MSD
         {
         }
 
-        public StringReference(StringCustomVariable value) : base(value)
+        public StringReference(CustomVariable<string> value) : base(value)
         {
         }
     }

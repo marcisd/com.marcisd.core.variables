@@ -9,7 +9,7 @@ Date:       16/01/2019 14:10
 
 namespace MSD
 {
-    public abstract class GenericCustomVariable<T> : ScriptableObject
+    public abstract class CustomVariable<T> : ScriptableObject
     {
         [TextArea(2, 5)] [SerializeField] private string _developerDescription;
 
@@ -37,6 +37,6 @@ namespace MSD
 
         public override string ToString() => Value.ToString();
 
-        public static implicit operator T(GenericCustomVariable<T> variable) => variable.Value;
+        public static implicit operator T(CustomVariable<T> variable) => variable.Value;
     }
 }

@@ -12,24 +12,14 @@ Date:       06/11/2018 15:39
 namespace MSD
 {
     [Serializable]
-    public class Variable<T> : VariableBase,
-        IValueChangeObservable<T>,
-        IValueChangeObservable
+    public class Variable<T> : IValueChangeObservable<T>
     {
         [SerializeField] private T _value = default;
 
         [field: NonSerialized] private T RuntimeValue { get; set; } = default;
 
         public event Action<T> OnValueChanged = delegate { };
-
-        private event Action NonGenericOnValueChanged = delegate { };
-
-        event Action IValueChangeObservable.OnValueChanged
-        {
-            add => NonGenericOnValueChanged += value;
-            remove => NonGenericOnValueChanged -= value;
-        }
-
+        
         public T Value
         {
             get => RuntimeValue;
@@ -42,7 +32,6 @@ namespace MSD
             {
                 RuntimeValue = value;
                 OnValueChanged?.Invoke(RuntimeValue);
-                NonGenericOnValueChanged?.Invoke();
             }
         }
 
@@ -55,9 +44,5 @@ namespace MSD
         {
             RuntimeValue = _value;
         }
-    }
-
-    public abstract class VariableBase
-    {
     }
 }

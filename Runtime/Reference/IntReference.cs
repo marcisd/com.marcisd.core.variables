@@ -10,7 +10,7 @@ Date:       06/11/2018 15:55
 namespace MSD
 {
     [Serializable]
-    public sealed class IntReference : GenericReference<int, IntCustomVariable>
+    public sealed class IntReference : GenericReference<int, CustomVariable<int>>
     {
         public IntReference()
         {
@@ -20,7 +20,7 @@ namespace MSD
         {
         }
 
-        public IntReference(IntCustomVariable value) : base(value)
+        public IntReference(CustomVariable<int> value) : base(value)
         {
         }
     }

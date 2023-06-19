@@ -11,7 +11,7 @@ Date:
 
 namespace MSD.Editor
 {
-	[CustomPropertyDrawer(typeof(VariableBase), true)]
+	[CustomPropertyDrawer(typeof(Variable<>), true)]
 	public class VariableDrawer : PropertyDrawer
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

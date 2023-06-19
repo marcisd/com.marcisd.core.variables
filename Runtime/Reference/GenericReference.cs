@@ -13,7 +13,7 @@ namespace MSD
     [Serializable]
     public abstract class GenericReference<TValue, TCustomVariable> : GenericReferenceBase,
         ISerializationCallbackReceiver
-        where TCustomVariable : GenericCustomVariable<TValue>
+        where TCustomVariable : CustomVariable<TValue>
     {
         [SerializeField] private bool _useConstant;
 
