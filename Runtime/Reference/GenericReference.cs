@@ -11,7 +11,8 @@ Date:       06/11/2018 15:41
 namespace MSD
 {
     [Serializable]
-    public abstract class GenericReference<TValue, TCustomVariable> : GenericReferenceBase
+    public abstract class GenericReference<TValue, TCustomVariable> : GenericReferenceBase,
+        ISerializationCallbackReceiver
         where TCustomVariable : GenericCustomVariable<TValue>
     {
         [SerializeField] private bool _useConstant;
@@ -19,6 +20,8 @@ namespace MSD
         [SerializeField] private TValue _constantValue;
 
         [SerializeField] private TCustomVariable _variable;
+
+        public event Action<TValue> OnValueChanged = delegate { };
 
         protected GenericReference()
         {
@@ -44,6 +47,29 @@ namespace MSD
         public TValue Value => _useConstant ? _constantValue : _variable.Value;
 
         public static implicit operator TValue(GenericReference<TValue, TCustomVariable> reference) => reference.Value;
+        
+        void ISerializationCallbackReceiver.OnBeforeSerialize()
+        {
+        }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize()
+        {
+            if (_useConstant && _variable == null)
+            {
+                return;
+            }
+
+            if (_variable is IValueChangeObservable<TValue> observable)
+            {
+                observable.OnValueChanged -= OnVariableValueChanged;
+                observable.OnValueChanged += OnVariableValueChanged;
+            }
+
+            void OnVariableValueChanged(TValue value)
+            {
+                OnValueChanged.Invoke(Value);
+            }
+        }
     }
 
     public abstract class GenericReferenceBase
