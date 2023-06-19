@@ -50,6 +50,7 @@ namespace MSD
         
         void ISerializationCallbackReceiver.OnBeforeSerialize()
         {
+            // Nothing to do for ISerializationCallbackReceiver.OnBeforeSerialize()
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
@@ -67,7 +68,7 @@ namespace MSD
 
             void OnVariableValueChanged(TValue value)
             {
-                OnValueChanged.Invoke(Value);
+                OnValueChanged.Invoke(value);
             }
         }
     }
