@@ -1,5 +1,6 @@
 using System.Reflection;
 using UnityEditor;
+using UnityEngine;
 
 namespace MSD.Editor
 {
@@ -15,10 +16,11 @@ namespace MSD.Editor
             string valueDisplay = value != null ? value.ToString() : string.Empty;
             
             EditorGUILayout.LabelField("Runtime Value");
-            using (new EditorGUI.IndentLevelScope(EditorGUI.indentLevel+1))
+            GUIStyle style = new GUIStyle(EditorStyles.helpBox)
             {
-                EditorGUILayout.SelectableLabel(valueDisplay);
-            }
+                fontSize = EditorStyles.label.fontSize
+            };
+            EditorGUILayout.SelectableLabel(valueDisplay, style);
         }
     }
 }
